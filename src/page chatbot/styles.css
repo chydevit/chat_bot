@@ -1,0 +1,135 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100vh; /* Ensures it doesn’t exceed the viewport height */
+  width: 100%;
+  max-width: 600px; /* Maximum width for larger screens */
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.chat-box {
+  flex: 1; /* Takes up remaining space */
+  overflow-y: auto;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9; /* Light background for messages area */
+}
+
+.input-container {
+  display: flex;
+  padding: 10px;
+  background: #fff;
+  border-top: 1px solid #ddd; /* Add a border at the top */
+}
+
+#message-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  color: black;
+  border-radius: 3px;
+  margin-right: 5px;
+  font-size: 14px; /* Adjust font size for better readability */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+}
+
+#message-input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.3); /* Highlight input field on focus */
+}
+
+#send-button,
+#clear-word-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px; /* Adjust font size */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+  margin-left: 5px; /* Spacing between buttons */
+}
+
+#send-button:hover,
+#clear-word-button:hover {
+  background-color: #218838;
+}
+
+#send-button:active,
+#clear-word-button:active {
+  background-color: #1e7e34; /* Darker shade when button is clicked */
+}
+
+.message {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  background-color: #008cff;
+  color: white; /* Ensure text is readable on dark background */
+  max-width: 80%; /* Prevent messages from stretching too wide */
+  word-break: break-word; /* Handle long words or URLs */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.message.sent {
+  background-color: #3210dc;
+  align-self: flex-end;
+}
+
+.message.received {
+  background-color: #ff4400; /* Different color for received messages */
+  align-self: flex-start;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .chat-container {
+    max-width: 100%;
+    height: 90vh; /* Adjust height to fit better on smaller screens */
+  }
+
+  .chat-box {
+    height: calc(
+      100% - 60px
+    ); /* Adjust height to account for the input container */
+  }
+}
+
+@media (max-width: 480px) {
+  .input-container {
+    flex-direction: column;
+  }
+
+  #message-input {
+    margin-right: 0;
+    margin-bottom: 5px;
+    font-size: 16px; /* Increase font size for better readability on small screens */
+  }
+
+  #send-button,
+  #clear-word-button {
+    width: 100%;
+    font-size: 16px; /* Increase font size */
+    margin-left: 0; /* Remove left margin for full-width buttons */
+    margin-bottom: 5px; /* Add spacing between buttons */
+  }
+
+  .message {
+    max-width: 95%; /* Ensure messages fit well on small screens */
+  }
+}
